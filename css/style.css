@@ -151,6 +151,7 @@ p {
 .navigation .email-icon {
 	position: absolute;
 	bottom: 25px;
+	text-decoration: none;
 }
 
 /* NAV END */
@@ -164,8 +165,8 @@ p {
 	cursor: pointer;
 	top: 0;
 	right: 0;
-	width: 80px;
-	height: 40px;
+	width: 40px;
+	height: 80px;
 	background: var(--primary-color) no-repeat center;
 	background-size: 30px;
 	z-index: 20; 
@@ -174,9 +175,8 @@ p {
 }
 
 .toggle.active {
-	height: 80px;
-	width: 40px;
-	flex-direction: column;
+	background: var(--red) no-repeat center;
+	box-shadow: 0px 0px 0px 0px var(--shadow-dark);
 }
 
 
@@ -242,3 +242,32 @@ p {
 }
 
 /* KEYFRAMES END */
+
+/* MEDIA QUERY */
+
+@media(max-width: 1068px) {
+	
+	section {
+		padding: 100px 40px;
+	}
+
+	.navigation ul li a {
+		font-size: 2rem;
+	}
+
+	.home-img {
+		display: none;
+	}
+
+	.toggle {
+		box-shadow: 0 0 0 0;
+	}
+
+	.logo {
+		top: 10px;
+		left: 40px;
+		font-size: 1.5rem;
+	}
+}
+
+/* MEDIA QUERY END */
