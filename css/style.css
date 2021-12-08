@@ -7,6 +7,10 @@
 	--yellow: rgba(250, 250, 50, 1);
 	--red: rgba(255, 50, 50, 1);
 	--blue: rgba(100, 100, 250, 1);
+	--purple:   rgba(255, 100, 255, 1);
+	--light-gray:  rgba(245, 245, 245, 1);
+	--md-gray:  rgba(190, 190, 190, 0.5);
+
 
 	/* SHADOW */
 	--shadow-dark: rgba(50, 50, 50, 1);
@@ -51,6 +55,10 @@ p {
 /* UTIL */
 
 .shadow {
+	box-shadow: 0px 0px 30px 10px var(--shadow-dark);
+}
+
+.shadow-md {
 	box-shadow: 0px 0px 30px 10px var(--shadow-dark);
 }
 
@@ -137,6 +145,7 @@ p {
 
 .navigation ul li a:hover {
 	color: var(--red);
+	font-size: 2.3rem;
 }
 
 .navigation .social-bar {
@@ -153,6 +162,20 @@ p {
 .navigation .social-bar a {
 	display: inline-block;
 	transform: scale(0.9);
+}
+
+.thisspan {
+	display: grid;
+	justify-content: right;
+	height: 0;
+	width: 0;
+	transform: scale(0);
+}
+
+.thisspan.active {
+	height: 1px;
+	width: 10px;
+	transform: scale(1.0);
 }
 
 .navigation .email-icon {
@@ -180,9 +203,30 @@ p {
 	margin-right: 25px;
 }
 
+.toggle:after {
+	content: 'MENU';
+	height: 10px;
+	width: 30px;
+	background: var(--yellow);
+	display: flex;
+	align-items: center;
+	margin-top: 70px;
+	font-size: 10px;
+	color: var(--blue);
+	border: 5px solid var(--yellow);
+}
+
 .toggle.active {
 	background: var(--red) no-repeat center;
 	box-shadow: 0px 0px 0px 0px var(--shadow-dark);
+}
+
+.toggle.active:after {
+	content: 'MENU';
+	background: var(--blue);
+	color: var(--yellow);
+	margin-top: 0;
+	border: 5px solid var(--blue);
 }
 
 
@@ -191,8 +235,9 @@ p {
 
 /* HOME */
 
-section.home {
+section.home-section {
 	flex-direction: row;
+	margin-top: 0;
 }
 
 .logo {
@@ -213,6 +258,7 @@ section.home {
 	right: 0;
 	bottom: 0;
 	height: 100%;
+	filter: blur(0px);
 }
 
 .img-top {
@@ -237,19 +283,122 @@ section.home {
 	max-width: 450px;
 }
 
+/*.home-content > div {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}*/
+
+
+.home-content > *:nth-child(2) {
+	position: fixed;
+	top: 0;
+	right: 100%;
+}
+
+.home-content h1 {
+	font-size: 40px;
+}
+
+.home-section .btn-slide {
+	position: fixed;
+	right: 0;
+	top: 0;
+	margin-right: 75px;
+	display: flex;
+	flex-direction: column;
+	z-index: 21;
+}
+
+.slide-img {
+	transition: transform 0.5s ease-in;
+}
+
+.btn-up {
+	width: 40px;
+	height: 80px;
+	background: var(--primary-color) no-repeat center;
+	background-size: 30px;
+	cursor: pointer;
+
+}
+
+.btn-slide .btn-up:after {
+	content: 'UP';
+	height: 10px;
+	width: 30px;
+	background: var(--yellow);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 70px;
+	font-size: 10px;
+	color: var(--blue);
+	border: 5px solid var(--yellow);
+}
+
 /* HOME END */
 
 /* SERVICE */
 
-section.services {
+.services-section {
 	flex-direction: column;
+	margin-top: 60px;
 }
 
-.services .icon {
+.services {
+	margin-top: 40px;
+	gap: 50px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	text-align: center;
+	justify-content: center;
+	padding-bottom: 20px;
+}
+
+.services .service {
+	padding: 10px;
+}
+
+.services .service:hover {
+	box-shadow: 0 10px 30px var(--md-gray);
+	background-color: var(--yellow);
+	transform: scale(1.1);
+}
+
+.services .service h2 {
+	font-size: 30px;
+	font-weight: 500;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	/*color: var(--blue);*/
+}
+
+.services .service .icon {
 	background: var(--primary-color);
-	height: 200px;
-	width: 100%;
+	height: 150px;
+	width: 150px;
 	border-radius: 15px;
+	margin-bottom: 10px;
+	display: inline-grid;
+	justify-content: center;
+	align-items: center;
+	justify-self: center;
+	margin: 10px;
+}
+
+.services .service .icon:after {
+	content: '';
+	border: 2px solid white;
+	border-radius: 15px;
+	height: 100px;
+	width: 100px;
+}
+
+.services .service .icon:hover {
+	background-color: var(--purple);
 }
 
 /* SERVICE END */
@@ -292,6 +441,22 @@ section.services {
 		top: 10px;
 		left: 40px;
 		font-size: 1.5rem;
+	}
+
+	.services {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media(max-width:  768px){
+	.services-section {
+		margin: 20px;
+	}
+
+	.services {
+		grid-template-columns: 1fr;
+		padding: 20px;
+		margin: 20px;
 	}
 }
 
